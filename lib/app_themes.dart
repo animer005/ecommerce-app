@@ -11,17 +11,13 @@ abstract class AppTheme {
       seedColor: primary,
       primary: primary,
       secondary: secondary,
+        onSurface: primary,
+        onPrimary: Colors.white,
+        onSecondary: Colors.white
     ),
     appBarTheme: const AppBarTheme(
       backgroundColor: primary,
       foregroundColor: Colors.white,
-    ),
-    textTheme: const TextTheme(
-      headlineMedium: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-      titleMedium: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-      bodyLarge: TextStyle(color: Colors.white),
-      bodyMedium: TextStyle(color: Colors.white),
-      bodySmall: TextStyle(color: Colors.white),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
