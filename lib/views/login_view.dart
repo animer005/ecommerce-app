@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ecommerce_app/view_models/login_viewmodel.dart';
+import 'package:ecommerce_app/utilities/widgets.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -121,29 +122,14 @@ class _LoginViewState extends State<LoginView> {
                         ),
                       ),
                       const SizedBox(height: 28),
-                      SizedBox(
-                        height: 52,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            elevation: 0,
-                          ),
-                          onPressed: () {
-                            final success = _viewModel.login();
-                            if (success) {
-                              Navigator.pushReplacementNamed(context, '/home');
-                            }
-                          },
-                          child: const Text(
-                            'Login',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
+                      CustomButton(
+                        text: 'Login',
+                        onPressed: () {
+                          final success = _viewModel.login();
+                          if (success) {
+                            Navigator.pushReplacementNamed(context, '/home');
+                          }
+                        },
                       ),
                     ],
                   ),
@@ -156,16 +142,11 @@ class _LoginViewState extends State<LoginView> {
                       "Don't have an account?",
                       style: TextStyle(color: Colors.white),
                     ),
-                    TextButton(
+                    CustomTextButton(
+                      label: 'Sign Up',
                       onPressed: () {
                         Navigator.pushNamed(context, '/signup');
                       },
-                      child: const Text(
-                        'Sign Up',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
                     ),
                   ],
                 ),

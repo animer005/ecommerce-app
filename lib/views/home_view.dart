@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ecommerce_app/app_themes.dart';
+import 'package:ecommerce_app/utilities/app_themes.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
