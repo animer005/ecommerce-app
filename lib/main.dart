@@ -1,10 +1,12 @@
+import 'package:ecommerce_app/utilities/notifications.dart';
 import 'package:flutter/material.dart';
 import 'utilities/app_themes.dart';
 import 'views/login_view.dart';
 import 'views/signup_view.dart';
 import 'views/home_view.dart';
-
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Notis().initNotification();
   runApp(const MyApp());
 }
 

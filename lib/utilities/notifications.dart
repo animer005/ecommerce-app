@@ -9,7 +9,7 @@ class Notis {
   Future<void> initNotification() async {
     if (_isInitialized) return;
     const initSettingsAndroid = AndroidInitializationSettings(
-      '@mipmap/ic_launcher.png',
+      '@mipmap/ic_launcher',
     );
     const initSettingsIOS = DarwinInitializationSettings(
       requestAlertPermission: true,
@@ -21,6 +21,24 @@ class Notis {
       iOS: initSettingsIOS,
     );
     await notificationsPlugin.initialize(settings: initSettings);
+    final androidPlugin = notificationsPlugin
+        .resolvePlatformSpecificImplementation<
+        AndroidFlutterLocalNotificationsPlugin>();
+    if (androidPlugin != null) {
+      await androidPlugin.createNotificationChannel(
+        const AndroidNotificationChannel(
+          'daily_channel_id',
+          'Daily Notifications',
+          description: 'Daily Notification Channel',
+          importance: Importance.max,
+          playSound: true,
+          enableVibration: true,
+        ),
+      );
+
+      await androidPlugin.requestNotificationsPermission();
+    }
+    _isInitialized = true;
   }
 
   NotificationDetails notificationDetails() {
@@ -42,9 +60,9 @@ class Notis {
   }) async {
     return notificationsPlugin.show(
       id: id,
-      body: body,
       title: title,
-      notificationDetails: const NotificationDetails(),
+      body: body,
+      notificationDetails: notificationDetails(),
     );
   }
 }
