@@ -56,6 +56,7 @@ class DefaultFirebaseOptions {
     projectId: 'ecommerce-app-4efb1',
     storageBucket: 'ecommerce-app-4efb1.firebasestorage.app',
   );
+
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyDrlx2AEceO6cOEUhp9SYNGnLC8Yq8UcMg',
     appId: '1:624384146339:ios:496f6c27851cbca3a43816',
