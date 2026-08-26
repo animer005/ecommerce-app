@@ -124,10 +124,15 @@ class _LoginViewState extends State<LoginView> {
                       const SizedBox(height: 28),
                       CustomButton(
                         text: 'Login',
-                        onPressed: () {
-                          final success = _viewModel.login();
+                        onPressed: () async {
+                          final success = await _viewModel.login();
+                          if (!context.mounted) return;
                           if (success) {
                             Navigator.pushReplacementNamed(context, '/home');
+                          } else if (_viewModel.errorMessage != null) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text(_viewModel.errorMessage!)),
+                            );
                           }
                         },
                       ),

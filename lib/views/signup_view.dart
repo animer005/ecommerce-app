@@ -144,10 +144,15 @@ class _SignupViewState extends State<SignupView> {
                       const SizedBox(height: 28),
                       CustomButton(
                         text: 'Sign Up',
-                        onPressed: () {
-                          final success = _viewModel.signup();
+                        onPressed: () async {
+                          final success = await _viewModel.signup();
+                          if (!context.mounted) return;
                           if (success) {
                             Navigator.pushReplacementNamed(context, '/login');
+                          } else if (_viewModel.errorMessage != null) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text(_viewModel.errorMessage!)),
+                            );
                           }
                         },
                       ),
