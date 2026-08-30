@@ -55,109 +55,114 @@ class _SignupViewState extends State<SignupView> {
                   ),
                 ),
                 const SizedBox(height: 36),
-                Container(
-                  padding: const EdgeInsets.all(24.0),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.05),
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(
-                      color: Colors.white.withValues(alpha: 0.1),
-                    ),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      TextFormField(
-                        controller: _viewModel.usernameController,
-                        decoration: InputDecoration(
-                          labelText: 'Username',
-                          prefixIcon: const Icon(Icons.person_outline),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(color: Colors.white.withValues(alpha: 0.2)),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(color: Colors.white.withValues(alpha: 0.2)),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(color: theme.colorScheme.secondary, width: 2),
-                          ),
+                ListenableBuilder(
+                  listenable: _viewModel,
+                  builder: (context, child) {
+                    return Container(
+                      padding: const EdgeInsets.all(24.0),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withValues(alpha: 0.05),
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(
+                          color: Colors.white.withValues(alpha: 0.1),
                         ),
                       ),
-                      const SizedBox(height: 16),
-                      TextFormField(
-                        controller: _viewModel.emailController,
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: InputDecoration(
-                          labelText: 'Email Address',
-                          prefixIcon: const Icon(Icons.email_outlined),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(color: Colors.white.withValues(alpha: 0.2)),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(color: Colors.white.withValues(alpha: 0.2)),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(color: theme.colorScheme.secondary, width: 2),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      TextFormField(
-                        controller: _viewModel.passwordController,
-                        obscureText: _obscurePassword,
-                        decoration: InputDecoration(
-                          labelText: 'Password',
-                          prefixIcon: const Icon(Icons.lock_outline),
-                          suffixIcon: IconButton(
-                            icon: Icon(
-                              _obscurePassword
-                                  ? Icons.visibility_off_outlined
-                                  : Icons.visibility_outlined,
-                              color: Colors.white,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          TextFormField(
+                            controller: _viewModel.usernameController,
+                            decoration: InputDecoration(
+                              labelText: 'Username',
+                              prefixIcon: const Icon(Icons.person_outline),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                                borderSide: BorderSide(color: Colors.white.withValues(alpha: 0.2)),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                                borderSide: BorderSide(color: Colors.white.withValues(alpha: 0.2)),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                                borderSide: BorderSide(color: theme.colorScheme.secondary, width: 2),
+                              ),
                             ),
-                            onPressed: () {
-                              setState(() {
-                                _obscurePassword = !_obscurePassword;
-                              });
+                          ),
+                          const SizedBox(height: 16),
+                          TextFormField(
+                            controller: _viewModel.emailController,
+                            keyboardType: TextInputType.emailAddress,
+                            decoration: InputDecoration(
+                              labelText: 'Email Address',
+                              prefixIcon: const Icon(Icons.email_outlined),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                                borderSide: BorderSide(color: Colors.white.withValues(alpha: 0.2)),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                                borderSide: BorderSide(color: Colors.white.withValues(alpha: 0.2)),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                                borderSide: BorderSide(color: theme.colorScheme.secondary, width: 2),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 16),
+                          TextFormField(
+                            controller: _viewModel.passwordController,
+                            obscureText: _obscurePassword,
+                            decoration: InputDecoration(
+                              labelText: 'Password',
+                              prefixIcon: const Icon(Icons.lock_outline),
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  _obscurePassword
+                                      ? Icons.visibility_off_outlined
+                                      : Icons.visibility_outlined,
+                                  color: Colors.white,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    _obscurePassword = !_obscurePassword;
+                                  });
+                                },
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                                borderSide: BorderSide(color: Colors.white.withValues(alpha: 0.2)),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                                borderSide: BorderSide(color: Colors.white.withValues(alpha: 0.2)),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                                borderSide: BorderSide(color: theme.colorScheme.secondary, width: 2),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 28),
+                          CustomButton(
+                            text: 'Sign Up',
+                            onPressed: () async {
+                              final success = await _viewModel.signup();
+                              if (!context.mounted) return;
+                              if (success) {
+                                Navigator.pushReplacementNamed(context, '/login');
+                              } else if (_viewModel.errorMessage != null) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text(_viewModel.errorMessage!)),
+                                );
+                              }
                             },
                           ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(color: Colors.white.withValues(alpha: 0.2)),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(color: Colors.white.withValues(alpha: 0.2)),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(color: theme.colorScheme.secondary, width: 2),
-                          ),
-                        ),
+                        ],
                       ),
-                      const SizedBox(height: 28),
-                      CustomButton(
-                        text: 'Sign Up',
-                        onPressed: () async {
-                          final success = await _viewModel.signup();
-                          if (!context.mounted) return;
-                          if (success) {
-                            Navigator.pushReplacementNamed(context, '/login');
-                          } else if (_viewModel.errorMessage != null) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text(_viewModel.errorMessage!)),
-                            );
-                          }
-                        },
-                      ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
                 const SizedBox(height: 24),
                 Row(
