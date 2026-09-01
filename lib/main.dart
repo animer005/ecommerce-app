@@ -14,19 +14,25 @@ void main() async {
   await Notis().initNotification();
   runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.theme,
-      initialRoute: '/login',
-      routes: {
-        '/login': (context) => const LoginView(),
-        '/signup': (context) => const SignupView(),
-        '/home': (context) => const HomeView(),
+    return ValueListenableBuilder<bool>(
+      valueListenable: AppTheme.isDarkNotifier,
+      builder: (context, isDark, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: AppTheme.theme,
+          initialRoute: '/login',
+          routes: {
+            '/login': (context) => const LoginView(),
+            '/signup': (context) => const SignupView(),
+            '/home': (context) => const HomeView(),
+          },
+        );
       },
     );
   }
