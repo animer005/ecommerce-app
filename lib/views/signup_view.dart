@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ecommerce_app/view_models/signup_viewmodel.dart';
 import 'package:ecommerce_app/utilities/widgets.dart';
+import 'package:ecommerce_app/utilities/app_themes.dart';
 
 class SignupView extends StatefulWidget {
   const SignupView({super.key});
@@ -43,7 +44,7 @@ class _SignupViewState extends State<SignupView> {
                   textAlign: TextAlign.center,
                   style: theme.textTheme.headlineMedium?.copyWith(
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: AppTheme.onBackground,
                   ),
                 ),
                 const SizedBox(height: 8),
@@ -51,7 +52,7 @@ class _SignupViewState extends State<SignupView> {
                   'Fill in your details to get started',
                   textAlign: TextAlign.center,
                   style: theme.textTheme.bodyMedium?.copyWith(
-                    color: Colors.white,
+                    color: AppTheme.onBackground,
                   ),
                 ),
                 const SizedBox(height: 36),
@@ -61,10 +62,10 @@ class _SignupViewState extends State<SignupView> {
                     return Container(
                       padding: const EdgeInsets.all(24.0),
                       decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.05),
+                        color: AppTheme.cardColor,
                         borderRadius: BorderRadius.circular(20),
                         border: Border.all(
-                          color: Colors.white.withValues(alpha: 0.1),
+                          color: AppTheme.cardBorderColor,
                         ),
                       ),
                       child: Column(
@@ -77,11 +78,11 @@ class _SignupViewState extends State<SignupView> {
                               prefixIcon: const Icon(Icons.person_outline),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
-                                borderSide: BorderSide(color: Colors.white.withValues(alpha: 0.2)),
+                                borderSide: BorderSide(color: AppTheme.borderColor),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
-                                borderSide: BorderSide(color: Colors.white.withValues(alpha: 0.2)),
+                                borderSide: BorderSide(color: AppTheme.borderColor),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
@@ -98,11 +99,11 @@ class _SignupViewState extends State<SignupView> {
                               prefixIcon: const Icon(Icons.email_outlined),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
-                                borderSide: BorderSide(color: Colors.white.withValues(alpha: 0.2)),
+                                borderSide: BorderSide(color: AppTheme.borderColor),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
-                                borderSide: BorderSide(color: Colors.white.withValues(alpha: 0.2)),
+                                borderSide: BorderSide(color: AppTheme.borderColor),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
@@ -122,7 +123,7 @@ class _SignupViewState extends State<SignupView> {
                                   _obscurePassword
                                       ? Icons.visibility_off_outlined
                                       : Icons.visibility_outlined,
-                                  color: Colors.white,
+                                  color: AppTheme.onBackground,
                                 ),
                                 onPressed: () {
                                   setState(() {
@@ -132,11 +133,11 @@ class _SignupViewState extends State<SignupView> {
                               ),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
-                                borderSide: BorderSide(color: Colors.white.withValues(alpha: 0.2)),
+                                borderSide: BorderSide(color: AppTheme.borderColor),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
-                                borderSide: BorderSide(color: Colors.white.withValues(alpha: 0.2)),
+                                borderSide: BorderSide(color: AppTheme.borderColor),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
@@ -168,9 +169,9 @@ class _SignupViewState extends State<SignupView> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
+                    Text(
                       'Already have an account?',
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: AppTheme.onBackground),
                     ),
                     CustomTextButton(
                       label: 'Log In',

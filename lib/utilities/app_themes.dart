@@ -10,7 +10,7 @@ abstract class AppTheme {
   static const backgroundDark = Color(0xFF0B1120);
   static const backgroundLight = Color(0xFFF8FAFC);
 
-  static final ValueNotifier<bool> isDarkNotifier = ValueNotifier<bool>(true);
+  static final ValueNotifier<bool> isDarkNotifier = ValueNotifier<bool>(false);
 
   static bool get isDark => isDarkNotifier.value;
   static set isDark(bool value) => isDarkNotifier.value = value;
@@ -19,6 +19,15 @@ abstract class AppTheme {
   static Color get secondary => isDark ? secondaryDark : secondaryLight;
   static Color get background => isDark ? backgroundDark : backgroundLight;
   static Color get onPrimary => isDark ? Colors.white : primaryDark;
+
+  // Text/icon color that reads correctly on `background` in both modes.
+  static Color get onBackground => isDark ? Colors.white : primaryDark;
+  static Color get hintColor => isDark ? Colors.white54 : primaryDark.withValues(alpha: 0.4);
+  static Color get labelColor => isDark ? Colors.white70 : primaryDark.withValues(alpha: 0.7);
+  static Color get iconColor => isDark ? Colors.white70 : primaryDark.withValues(alpha: 0.7);
+  static Color get borderColor => isDark ? Colors.white.withValues(alpha: 0.2) : primaryDark.withValues(alpha: 0.2);
+  static Color get cardColor => isDark ? Colors.white.withValues(alpha: 0.05) : primaryDark.withValues(alpha: 0.03);
+  static Color get cardBorderColor => isDark ? Colors.white.withValues(alpha: 0.1) : primaryDark.withValues(alpha: 0.08);
 
   static ThemeData get theme => ThemeData(
     brightness: isDark ? Brightness.dark : Brightness.light,
@@ -47,10 +56,10 @@ abstract class AppTheme {
       foregroundColor: Colors.white,
     ),
     inputDecorationTheme: InputDecorationTheme(
-      hintStyle: const TextStyle(color: Colors.white54),
-      labelStyle: const TextStyle(color: Colors.white70),
+      hintStyle: TextStyle(color: hintColor),
+      labelStyle: TextStyle(color: labelColor),
       floatingLabelStyle: TextStyle(color: secondary),
-      iconColor: Colors.white70,
+      iconColor: iconColor,
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(foregroundColor: secondary),
