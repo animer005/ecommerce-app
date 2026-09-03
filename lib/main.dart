@@ -32,6 +32,14 @@ class MyApp extends StatelessWidget {
             '/signup': (context) => const SignupView(),
             '/home': (context) => const HomeView(),
           },
+          builder: (context, child) {
+            return AnimatedTheme(
+              data: AppTheme.theme,
+              duration: const Duration(milliseconds: 800),
+              curve: Curves.easeInOut,
+              child: child!,
+            );
+          },
         );
       },
     );

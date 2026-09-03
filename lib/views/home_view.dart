@@ -52,7 +52,6 @@ class _HomeViewState extends State<HomeView> {
       valueListenable: AppTheme.isDarkNotifier,
       builder: (context, isDark, child) {
         return Scaffold(
-          backgroundColor: AppTheme.background,
           appBar: AppBar(
             title: const Text('Homescreen'),
             actions: [

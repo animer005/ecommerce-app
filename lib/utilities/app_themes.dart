@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 
 abstract class AppTheme {
   static const primaryDark = Color(0xFF0F172A);
-  // Inverted color of 0xFF0F172A (255 - R, 255 - G, 255 - B)
-  static const primaryLight = Color(0xFFF0E8D5);
+  static const primaryLight = Color(0xFFE2E8F0);
 
   static const secondaryDark = Color(0xFF10B981);
-  static const secondaryLight = primaryDark;
+  static const secondaryLight = Color(0xFF059669);
   static const backgroundDark = Color(0xFF0B1120);
   static const backgroundLight = Color(0xFFF8FAFC);
 
